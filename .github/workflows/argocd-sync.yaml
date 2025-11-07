@@ -1,0 +1,34 @@
+name: 'Argo CD - Optional Sync Trigger'
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'clusters/**'
+      - 'argocd/**'
+
+permissions:
+  contents: read
+
+jobs:
+  argocd_sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Optionally trigger Argo CD sync (requires ARGOCD_SERVER + ARGOCD_PASSWORD or ARGOCD_TOKEN as secrets)
+        env:
+          ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
+          ARGOCD_PASSWORD: ${{ secrets.ARGOCD_PASSWORD }}
+          ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
+        run: |
+          if [ -n "$ARGOCD_TOKEN" ]; then
+            echo "Using token-based sync..."
+            # argocd CLI could be used to trigger app sync; plugin installation omitted here.
+            # Example:
+            # curl -s -H "Authorization: Bearer $ARGOCD_TOKEN" \
+            #   -X POST https://$ARGOCD_SERVER/api/v1/applications/cluster-staging/sync
+            echo "Add your ArgoCD server and token to GitHub Secrets to enable automatic API sync if desired."
+          else
+            echo "ARGOCD_TOKEN not set; Argo CD will still auto-sync based on its Git polling/reconciliation."
+          fi

@@ -1,0 +1,6 @@
+# Argo CD bootstrap manifest (recommended to use official install in production)
+# To install Argo CD, you can run:
+# kubectl create namespace argocd
+# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+#
+# This file intentionally points to the official manifest rather than embedding the whole manifest here.
