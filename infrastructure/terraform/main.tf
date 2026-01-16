@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 module "eks_cluster" {
-  source = "git::https://github.com/<you>/platform-automation.git//terraform/eks-cluster?ref=v0.1.0"
+  source = "git::https://github.com/Larry0t/platform-automation.git//terraform/eks-cluster?ref=v0.1.0"
+
 
   cluster_name    = var.cluster_name
   vpc_cidr        = var.vpc_cidr
