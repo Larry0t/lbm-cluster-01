@@ -1,11 +1,32 @@
 variable "region" {
-  description = "AWS region"
-  type        = string
-  default     = "eu-central-1"
+  type = string
 }
 
 variable "cluster_name" {
-  description = "EKS cluster name"
-  type        = string
-  default     = "lbm-cls01"
+  type = string
+}
+
+variable "vpc_cidr" {
+  type = string
+}
+
+variable "private_subnets" {
+  type = list(string)
+}
+
+variable "public_subnets" {
+  type = list(string)
+}
+
+variable "cluster_version" {
+  type    = string
+  default = "1.30"
+}
+
+variable "node_groups" {
+  type = any
+}
+
+variable "tags" {
+  type = map(string)
 }
