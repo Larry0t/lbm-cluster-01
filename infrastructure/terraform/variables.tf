@@ -23,7 +23,7 @@ variable "cluster_version" {
   default = "1.30"
 }
 
-variable "node_groups" {
+variable "eks_managed_node_groups" {
   type = any
 }
 

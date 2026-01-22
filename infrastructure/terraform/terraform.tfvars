@@ -14,7 +14,7 @@ public_subnets = [
   "10.0.103.0/24"
 ]
 
-node_groups = {
+eks_managed_node_groups = {
   default = {
     desired_capacity = 2
     max_capacity     = 3
