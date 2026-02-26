@@ -1,5 +1,18 @@
-*.tfstate
-*.tfstate.backup
+# Terraform
 .terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
 .terraform.lock.hcl
-/.vscode/
+
+# General
+.DS_Store
+.idea/
+.vscode/
+
+# Variables;tokens
+.env
+
+# Python
+__pycache__/
+.venv/
